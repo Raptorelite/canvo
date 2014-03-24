@@ -29,6 +29,11 @@ document.body.appendChild(canvas);
 };
 
 function manipulatePixels(myImageData) {
+ var mode="grayscale";
+ switch (mode) {
+    //case
+case "solarize":
+ 
   for (var i=0;i<myImageData.data.length;i+=4)
   {
     if (myImageData.data[i]>168) {
@@ -57,9 +62,248 @@ function manipulatePixels(myImageData) {
     {
         myImageData.data[i+2]=myImageData.data[i+2];
     }
+    myImageData.data[i+3]=255;
+    }
+    return myImageData;
+case "brighten":
+     for (var i=0;i<myImageData.data.length;i+=4)
+  {
 
-  myImageData.data[i+3]=255;
-  }
-  return myImageData;
+    myImageData.data[i]=myImageData.data[i]*2;
+    myImageData.data[i+1]=myImageData.data[i+1]*2;
+    myImageData.data[i+2]=myImageData.data[i+2]*2;
+    myImageData.data[i+3]=255;
+    }
+        return myImageData;
+case "darken":
+     for (var i=0;i<myImageData.data.length;i+=4)
+  {
+
+    myImageData.data[i]=myImageData.data[i]/2;
+    myImageData.data[i+1]=myImageData.data[i+1]/2;
+    myImageData.data[i+2]=myImageData.data[i+2]/2;
+    myImageData.data[i+3]=255;
+    }
+        return myImageData;
+case "redify":
+     for (var i=0;i<myImageData.data.length;i+=4)
+  {
+
+    myImageData.data[i]=myImageData.data[i]*2;
+    myImageData.data[i+1]=myImageData.data[i+1];
+    myImageData.data[i+2]=myImageData.data[i+2];
+    myImageData.data[i+3]=255;
+    }     
+     return myImageData;
+ case "bluify":
+     for (var i=0;i<myImageData.data.length;i+=4)
+  {
+
+    myImageData.data[i]=myImageData.data[i];
+    myImageData.data[i+1]=myImageData.data[i+1];
+    myImageData.data[i+2]=myImageData.data[i+2]*2;
+    myImageData.data[i+3]=255;
+    }    
+    return myImageData;
+case "greenify":
+     for (var i=0;i<myImageData.data.length;i+=4)
+  {
+
+    myImageData.data[i]=myImageData.data[i];
+    myImageData.data[i+1]=myImageData.data[i+1]*2;
+    myImageData.data[i+2]=myImageData.data[i+2];
+    myImageData.data[i+3]=255;
+    }    
+    return myImageData;
+case "yellowfy":
+     for (var i=0;i<myImageData.data.length;i+=4)
+  {
+
+    myImageData.data[i]=myImageData.data[i]*2;
+    myImageData.data[i+1]=myImageData.data[i+1]*2;
+    myImageData.data[i+2]=myImageData.data[i+2];
+    myImageData.data[i+3]=255;
+    }
+        return myImageData;
+
+ case "cyanify":
+     for (var i=0;i<myImageData.data.length;i+=4)
+  {
+
+    myImageData.data[i]=myImageData.data[i];
+    myImageData.data[i+1]=myImageData.data[i+1]*2;
+    myImageData.data[i+2]=myImageData.data[i+2]*2;
+    myImageData.data[i+3]=255;
+    }  
+      return myImageData;
+    
+    
+   case "magentify":
+     for (var i=0;i<myImageData.data.length;i+=4)
+  {
+
+    myImageData.data[i]=myImageData.data[i]*2;
+    myImageData.data[i+1]=myImageData.data[i+1];
+    myImageData.data[i+2]=myImageData.data[i+2]*2;
+    myImageData.data[i+3]=255;
+    }  
+        return myImageData;
+   
+    case "grayscale":
+     for (var i=0;i<myImageData.data.length;i+=4)
+  {
+
+    myImageData.data[i]=myImageData.data[i];
+    myImageData.data[i+1]=myImageData.data[i];
+    myImageData.data[i+2]=myImageData.data[i];
+    myImageData.data[i+3]=255;
+    }  
+        return myImageData;
+    
+   case "highlight":    
+        for (var i=0;i<myImageData.data.length;i+=4)
+  {
+    if (myImageData.data[i]>200||myImageData.data[i+1]>200||myImageData.data[i+2]>200) {
+      myImageData.data[i]=255;
+      myImageData.data[i+1]=255;
+      myImageData.data[i+2]=255;
+    }
+    else
+    {
+        myImageData.data[i]=0;
+        myImageData.data[i+1]=0;
+        myImageData.data[i+2]=0;
+    }
+    
+        
+        myImageData.data[i+3]= 255;
+    }
+        return myImageData;
+    
+     case "accentuate":    
+        for (var i=0;i<myImageData.data.length;i+=4)
+  {
+    if (myImageData.data[i]<84||myImageData.data[i+1]<84||myImageData.data[i+2]<84) {
+      myImageData.data[i]=0;
+      myImageData.data[i+1]=0;
+      myImageData.data[i+2]=0;
+    }
+    else
+    {
+       
+    }
+    
+        
+        myImageData.data[i+3]= 255;
+    }
+        return myImageData;
+    
+    
+       case "accentRed":    
+        for (var i=0;i<myImageData.data.length;i+=4)
+  {
+    if (myImageData.data[i]<84||myImageData.data[i+1]<84||myImageData.data[i+2]<84) {
+      myImageData.data[i]=myImageData.data[i];
+      myImageData.data[i+1]=0;
+      myImageData.data[i+2]=0;
+    }
+    else{}
+        myImageData.data[i+3]= 255;
+    }
+        return myImageData; 
+    
+    case "accentGreen":    
+        for (var i=0;i<myImageData.data.length;i+=4)
+  {
+    if (myImageData.data[i]<84||myImageData.data[i+1]<84||myImageData.data[i+2]<84) {
+      myImageData.data[i]=0;
+      myImageData.data[i+1]=myImageData.data[i+1];
+      myImageData.data[i+2]=0;
+    }
+    else{}
+        myImageData.data[i+3]= 255;
+    }
+        return myImageData; 
+    
+    case "accentBlue":    
+        for (var i=0;i<myImageData.data.length;i+=4)
+  {
+    if (myImageData.data[i]<84||myImageData.data[i+1]<84||myImageData.data[i+2]<84) {
+      myImageData.data[i]=0;
+      myImageData.data[i+1]=0;
+      myImageData.data[i+2]=myImageData.data[i+2];
+    }
+    else{}
+        myImageData.data[i+3]= 255;
+    }
+        return myImageData;
+    
+     case "highlightRed":    
+        for (var i=0;i<myImageData.data.length;i+=4)
+  {
+    if (myImageData.data[i]>200||myImageData.data[i+1]>200||myImageData.data[i+2]>200) {
+//      myImageData.data[i];
+    if(myImageData.data[i]>200)
+      myImageData.data[i]=255;
+  //    myImageData.data[i+2];
+    }
+    else
+    {
+ //       myImageData.data[i]=0;
+ //       myImageData.data[i+1]=0;
+ //       myImageData.data[i+2]=0;
+    }
+    
+        
+        myImageData.data[i+3]= 255;
+    }
+        return myImageData;
+    
+    
+      case "highlightGreen":    
+        for (var i=0;i<myImageData.data.length;i+=4)
+  {
+    if (myImageData.data[i]>200||myImageData.data[i+1]>200||myImageData.data[i+2]>200) {
+//      myImageData.data[i];
+if (myImageData.data[i+1]>200) 
+    //code
+     myImageData.data[i+1]=255;
+  //    myImageData.data[i+2];
+    }
+    else
+    {
+ //       myImageData.data[i]=0;
+ //       myImageData.data[i+1]=0;
+ //       myImageData.data[i+2]=0;
+    }
+    
+        
+        myImageData.data[i+3]= 255;
+    }
+        return myImageData;
+    
+     case "highlightBlue":    
+        for (var i=0;i<myImageData.data.length;i+=4)
+  {
+    if (myImageData.data[i]>200||myImageData.data[i+1]>200||myImageData.data[i+2]>200) {
+//      myImageData.data[i];
+if(myImageData.data[i+2]>200)
+      myImageData.data[i+2]=255;
+  //    myImageData.data[i+2];
+    }
+    else
+    {
+ //       myImageData.data[i]=0;
+ //       myImageData.data[i+1]=0;
+ //       myImageData.data[i+2]=0;
+    }
+    
+        
+        myImageData.data[i+3]= 255;
+    }
+        return myImageData;
+    
+ }
+
 };
 }      
